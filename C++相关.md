@@ -263,6 +263,13 @@ try {
 * 在类定义体中，不初始化也能通过声明。但不能在类定义体中进行初始化，只能在构造时初始化。
 * C++规定，只有“const static的整形成员”才可以在类定义体中进行初始化。
 
+```
+char str[] = "hello";
+const char* ptr = str; //意味着不能通过ptr来改变str的内容
+char const * ptr = str; //同上
+char* const ptr = str; //意味着不能改变ptr指向的地址
+```
+
 ## static
 * 静态局部变量：用于函数体内部修饰变量，这种变量的生存期长于该函数。
 * 静态全局变量：定义在函数体外，用于修饰全局变量，表示该变量只在本文件可见。
@@ -368,7 +375,7 @@ typedef union epoll_data {
 epoll是Linux内核为处理大批量文件描述符而作了改进的poll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。原因就是获取事件的时候，它无须遍历整个被侦听的描述符集，只要遍历那些被内核IO事件异步唤醒而加入Ready队列的描述符集合就行了。
 
 ### kqueue
-> macOS 下epoll替代者。
+> `macOS` 下`epoll`替代者。
 
 
 ## signal driven IO
